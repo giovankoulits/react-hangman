@@ -1,0 +1,17 @@
+.board {
+  width: 667px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.key {
+  width: 80px;
+  height: 80px;
+  border: 1px solid whitesmoke;
+  margin: 5px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
