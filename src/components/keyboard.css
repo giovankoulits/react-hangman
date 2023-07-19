@@ -1,17 +1,21 @@
 .board {
-  width: 667px;
+  width: 660px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: flex-start;
+  border: 2px solid white;
+  margin-top: 2vh;
+  border-radius: 5px;
 }
 
 .key {
   width: 80px;
   height: 80px;
   border: 1px solid whitesmoke;
-  margin: 5px;
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
+  margin: 6px;
 }
