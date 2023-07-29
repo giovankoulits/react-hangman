@@ -6,4 +6,35 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #242424;
+}
+.movieTitle {
+  color: white;
+}
+
+.query-word {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+}
+
+.query-word span {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 5px;
+  display: flex;
+  align-items: end;
+}
+
+.query-word div {
+  color: white;
+  font-size: 40px;
+  border-bottom: 2px solid white;
+  font-weight: bold;
+  margin: 5px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
 }

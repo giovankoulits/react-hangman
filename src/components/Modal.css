@@ -1,0 +1,28 @@
+.modal-h2 {
+  color: #fff;
+
+  font-size: 34px;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+.modal-h2 > span {
+  color: #34314c;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.modal-h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 300px;
+
+  background-color: #121212;
+}
