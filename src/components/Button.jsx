@@ -1,17 +1,17 @@
 
 import "./Button.css"
-const Button = ({ closeModal, onSubmit }) => {
+const Button = ({ play, closeModal }) => {
   return (
-    <div onClick={() => closeModal ? closeModal() : onSubmit()} className="btn-div">
+    <div onClick={() => play ? play() : closeModal()
+    } className="btn-div" >
       <a href="#">
         <div className="my-button">
           <p>
-            {closeModal ? "Play Again" : "Play"}
+            {play ? "Start" : "Go to start"}
           </p>
         </div>
       </a>
-    </div>
-
+    </div >
   )
 }
 

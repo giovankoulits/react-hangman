@@ -1,70 +1,54 @@
-import Button from "./components/Button";
-import { useEffect, useState } from "react";
+import useLogic from "./hooks/useLogic";
 import Keyboard from "./components/Keyboard";
 import Pinata from "./components/Pinata";
 import MyModal from "./components/MyModal"
-import Form from "./components/Form";
-import "./App.css"
+import Button from "./components/Button";
+import Select from "./components/Select";
 import { nanoid } from "nanoid";
+import "./App.css"
 
 function App() {
-  const [wordLength, setWordLength] = useState(10)
-  const [end, setEnd] = useState(false)
-  const [start, setStart] = useState(false)
-  const [word, setWord] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [hits, setHits] = useState([])
-  const [guesses, setGuesses] = useState([])
-  const [win, setWin] = useState(false)
-  const [loss, setLoss] = useState(false)
+  const {
+    end,
+    start,
+    word,
+    isLoading,
+    hits,
+    misses,
+    win,
+    loss,
+    play,
+    closeModal,
+    handleClick,
+    selectLength,
+  } = useLogic()
 
-  useEffect(() => {
-    if (start) {
-      setIsLoading(true)
-      fetch(`https://random-word-api.herokuapp.com/word${wordLength ? "?length=" + wordLength : ""}`).then(res => res.json()).then(res => {
-        setWord(res[0].split(""));
-        setIsLoading(false)
-      })
-    }
-  }, [start])
 
-  function handleClick(e) {
-    let letter = e.target.closest(".key").innerText
-    if (word.includes(letter)) {
-      setHits(prev => [...prev, letter])
-      return
-    }
-    setGuesses(prev => [...prev, letter])
-  }
-
-  function handleEnd() {
-    if (guesses.length >= 6) {
-      setLoss(true)
-      setEnd(true);
-    }
-  }
-
-  function rePlay() {
-    setEnd(false);
-    setStart(true)
-    setGuesses([])
-    setHits([])
-  }
-
-  function handleForm() {
-    setStart(true)
-  }
-
-  const mapAndDisplay = (letter) =>
-    (<div key={nanoid()}><span style={{ display: `${hits.some(char => char === letter) ? "flex" : "none"}` }}>{letter}</span></div>)
+  const mapAndDisplay = (letter) => (
+    <div key={nanoid()}>
+      <span style={{ display: `${hits.includes(letter) ? 'flex' : 'none'}` }}>
+        {letter}
+      </span>
+    </div>
+  );
 
   return (
     <>
-      <MyModal rePlay={rePlay} open={end} win={win} loss={loss} />
-      <Pinata guesses={guesses} />
-      <div className="query-word" >{isLoading ? <h1>Loading...</h1> : word && word.map(mapAndDisplay)} </div>
-      < Keyboard handleEnd={handleEnd} onClick={handleClick} />
-      <Form onSubmit={handleForm} />
+      <MyModal word={word} closeModal={closeModal} end={end} win={win} loss={loss} />
+      <div className="pinataAndWord">
+        <Pinata misses={misses} />
+        <div className="wordAndMisses">
+          <h2 style={{ color: "red" }}>{misses.length > 0 && misses.map(miss => miss + ",")}</h2>
+          <div className="query-word" >{isLoading ? <h2>Loading...</h2> : word && word.map(mapAndDisplay)} </div>
+        </div>
+
+      </div>
+      < Keyboard handleClick={handleClick} />
+
+      <div id="form">
+        <Button play={play} start={start} />
+        <Select start={start} selectLength={selectLength} />
+      </div>
     </>
   )
 }

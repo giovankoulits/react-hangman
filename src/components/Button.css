@@ -7,7 +7,6 @@ a {
 
 p {
   text-align: center;
-  font-family: sans-serif;
   font-weight: 600;
 }
 
@@ -28,7 +27,6 @@ p {
 
 .btn-div {
   display: flex;
-  width: 100%;
   justify-content: center;
   margin-top: 30px;
 }

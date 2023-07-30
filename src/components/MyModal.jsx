@@ -1,8 +1,8 @@
 import Modal from 'react-modal';
 import './Modal.css';
 import Button from './Button';
-import { useState } from 'react';
-const MyModal = ({ open, rePlay }) => {
+
+const MyModal = ({ word, end, closeModal, win, loss }) => {
   //Modal Styles
   const customStyles = {
     content: {
@@ -19,22 +19,23 @@ const MyModal = ({ open, rePlay }) => {
       boxShadow: "0 5px 25px -5px rgb(77, 141, 193)",
       border: "1px rgb(106, 188, 255) solid",
       backgroundColor: " #121212"
-      /*       animation: 'fade-in 1s ease', */
     },
   };
 
+  const winOrLose = win ? "Congrats! \n You Won 🥳" : "Oh no! \n You Lost 😪"
+  const revealWord = word.length && word.join("")
   return (
     <Modal
       style={customStyles}
-      isOpen={open}
+      isOpen={end}
       contentLabel='Example Modal'
     >
       <div className='modal-container '>
-        <h1 className='modal-h1'>Congrats!</h1>
+        <h1 className='modal-h1'>  {winOrLose}</h1>
         <h2 className='modal-h2'>
-          You Won 🥳
+          {!win && `The Word you were looking for is ${revealWord}`}
         </h2>
-        <Button closeModal={rePlay} />
+        <Button closeModal={closeModal} />
       </div>
     </Modal>
   );
