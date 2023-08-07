@@ -22,7 +22,7 @@ function App() {
     handleClick,
     selectLength,
   } = useLogic()
-
+  console.log(word);
 
   const mapAndDisplay = (letter) => (
     <div key={nanoid()}>

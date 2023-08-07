@@ -22,7 +22,7 @@ const MyModal = ({ word, end, closeModal, win, loss }) => {
     },
   };
 
-  const winOrLose = win ? "Congrats! \n You Won 🥳" : "Oh no! \n You Lost 😪"
+  const winOrLose = win ? "Congrats! You Won 🥳" : "Oh no! You Lost 😪"
   const revealWord = word.length && word.join("")
   return (
     <Modal
@@ -31,7 +31,7 @@ const MyModal = ({ word, end, closeModal, win, loss }) => {
       contentLabel='Example Modal'
     >
       <div className='modal-container '>
-        <h1 className='modal-h1'>  {winOrLose}</h1>
+        <h1 className='modal-h1 h3'>  {winOrLose}</h1>
         <h2 className='modal-h2'>
           {!win && `The Word you were looking for is ${revealWord}`}
         </h2>
