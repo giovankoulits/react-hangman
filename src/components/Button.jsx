@@ -7,7 +7,7 @@ const Button = ({ play, closeModal }) => {
       <a href="#">
         <div className="my-button">
           <p>
-            {play ? "Start" : "Go to start"}
+            {play ? "Starter" : "Go to start"}
           </p>
         </div>
       </a>
